@@ -1,9 +1,10 @@
-class Person{
+﻿class Person{
     //成员变量的创建
     //属性1
     private String name;
     //属性2
     private int age;
+    //
     
     //构造方法
     //对属性进行初始化
