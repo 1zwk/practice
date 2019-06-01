@@ -1,11 +1,10 @@
-﻿class Person{
+//创造类的模型
+class Person{
     //成员变量的创建
     //属性1
     private String name;
     //属性2
-    private int age;
-    //
-    
+    private int age;   
     //构造方法
     //对属性进行初始化
     public Person(){
@@ -25,7 +24,6 @@
       System.out.println("姓名："+ name + "年龄:"+ age); 
     }  
 }
-
 public class DailyPractice{
     // main方法 
     public static void main(String[] args){
@@ -39,3 +37,25 @@ public class DailyPractice{
       person.printlnPerson();
     }      
 }
+
+//顺序表
+public class ArrayList{
+	int size = 0;
+	int[] array = new int[10];
+
+public void insert(int element, int index){
+	if(index < 0 || index > size){
+		System.out.println("错误");
+		return;//直接跳出
+	}	
+	//数据下标
+	for(int i = size - 1; i >= index; i--){
+		
+	}	
+ }
+	
+}
+
+
+
+//链表

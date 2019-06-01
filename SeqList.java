@@ -13,6 +13,23 @@ public class SeqList{
 		//array2 = new int[] {5, 7 ,4, 20, 31, 5, 6}; 
 		size = 0;
 	}
+	
+	private ensureCapacity(){
+		if(size < array.length){
+			return;
+		}
+		//否则扩容
+		//1.申请空间
+		int oldCapacity = array.length;
+		int newCapacity = oldCapacity +  oldCapacity/2;
+		int newArray = int[newCapacity];
+		//2，搬家
+		for(int i = 0; i < size; i++){
+			newArray[i] = array[i];
+		}
+		//3。通知地址
+		//有自动回收
+	}
 
 //头插
 public void pushFront(int element){
@@ -35,6 +52,7 @@ public void pushBack(int element){
 public void insert(int index, int element){
 	if(index < 0 || index > size){
 		System.out.println("错误，无法插入");
+		return;
 	}
 	//遍历从后向前。	
 	//i是空间下标
