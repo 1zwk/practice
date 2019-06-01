@@ -1,4 +1,4 @@
-//创造类的模型
+﻿//创造类的模型
 class Person{
     //成员变量的创建
     //属性1
@@ -9,7 +9,7 @@ class Person{
     //对属性进行初始化
     public Person(){
        this.name = name;
-       this.age = age;
+       this.age = age; 
     }
 	
     //方法1
