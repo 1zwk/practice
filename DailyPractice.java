@@ -11,6 +11,7 @@ class Person{
        this.name = name;
        this.age = age;
     }
+	
     //方法1
     public void personName(String n){
        name = n;
