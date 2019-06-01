@@ -1,16 +1,16 @@
-﻿//创造类的模型
+//创造类的模型
 class Person{
     //成员变量的创建
     //属性1
     private String name;
-    //属性2 
+    //属性2
     private int age;   
     //构造方法
     //对属性进行初始化
     public Person(){
        this.name = name;
-       this.age = age; 
-    } 
+       this.age = age;
+    }
 	
     //方法1
     public void personName(String n){
