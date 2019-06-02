@@ -35,7 +35,7 @@ class B{
 }
 
 
-//只能有一个被public 修饰的类
+// 只能有一个被public 修饰的类
 public class ClassAndObject0519{
 	public static void main(String[] args){
 		Group group = new Group("java10班",50);
