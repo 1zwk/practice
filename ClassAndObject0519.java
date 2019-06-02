@@ -1,9 +1,9 @@
-class Group{
+﻿class Group{
 	//属性
 	String name;
 	int numble;
 	
-	//方法
+	 //方法
 	//构造方法
     //
 
