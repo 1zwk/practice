@@ -16,7 +16,7 @@
 	 	System.out. printf("%s %s 的 %d 位同学们%n",
 		welcome,     //形参             ?
 		name,        //属性
-		numble      //属性
+		numble       //属性
 	    );
 	}
 }
