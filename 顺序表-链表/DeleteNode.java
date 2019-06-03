@@ -16,6 +16,7 @@ class Node{
 }
 
 public class DeleteNode{
+	//直接删除与val相同的节点（首节点和后面分开完成）
 	public static Node deleteNode1(Node head, int val){
 		if(head == null){
 			return null;
@@ -36,6 +37,7 @@ public class DeleteNode{
 		return head;
 	} 
 	
+	//直接删除与val相同的节点（创建假的首节点，使整个链表直接完成删除val）
 	public static Node deleteNode2(Node head, int val){
 		Node fakeNode = new Node(0);
 		fakeNode.next = head;
@@ -52,6 +54,37 @@ public class DeleteNode{
 		}
 		return fakeNode.next;
 		
+	}
+	
+	//创建新链表，把不等于val的节点都传过去。
+	public static Node deleteNode3(Node head, int val){
+		Node newList = null;
+		
+		Node cur = head;
+		while(cur != null){
+			Node next = cur.next;
+			if(cur.value != val){
+				//把cur尾插到newList
+				if(newList == null){
+					cur.next = newList;
+					newList = cur;            //?
+				}else{
+					Node last = findLast(cur);
+					last.next = cur;
+					cur.next = null;     //?
+				}
+			}
+			cur = next;	
+		}
+		return newList;
+	}
+	
+	public static Node findLast(Node head){
+		Node cur = head;
+		while(cur != null){
+			cur = cur.next;
+		}
+		return cur;
 	}
 	
 	
