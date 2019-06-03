@@ -67,13 +67,11 @@ public class DeleteNode{
 				//把cur尾插到newList
 				if(newList == null){
 					cur.next = newList;
-					newList = cur;
-					newLast = cur;
+					newList = cur;					
 				}else{
-					newLast.next = cur;
-					newLast = cur;
+					newLast.next = cur;					
 				}
-				
+				newLast = cur;
 			}
 			cur = next;	
 		}
