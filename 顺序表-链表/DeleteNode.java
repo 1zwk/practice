@@ -16,25 +16,44 @@ class Node{
 }
 
 public class DeleteNode{
-	public static Node deleteNode(Node head, int a){
+	public static Node deleteNode1(Node head, int val){
 		if(head == null){
 			return null;
 		}
 		Node cur = head.next;
 		Node prev = head;
 		while(cur != null){
-			if(cur.value == a){
+			if(cur.value == val){
 			   prev.next = cur.next;
 			}else{
 			prev = cur;
 			}
 			cur = cur.next;
 		}
-		if(head.value == a){
+		if(head.value == val){
 			return head.next;
 		}
 		return head;
 	} 
+	
+	public static Node deleteNode2(Node head, int val){
+		Node fakeNode = new Node(0);
+		fakeNode.next = head;
+		
+		Node prev = fakeNode;
+		Node cur = head;
+		while(cur != null){
+			if(cur.value == val){
+				prev.next = cur.next;
+			}else{
+				prev = cur;
+			}
+			cur = cur.next;
+		}
+		return fakeNode.next;
+		
+	}
+	
 	
 	public static void display(Node head){
 		for(Node cur = head; cur != null; cur = cur.next){
@@ -46,22 +65,27 @@ public class DeleteNode{
 	public static void main(String[] args){
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
-		Node n3 = new Node(3);
+		Node n3 = new Node(6);
 		Node n4 = new Node(4);
 		Node n5 = new Node(5);
 		Node n6 = new Node(1);
-		
+		Node n7 = new Node(6);
 		
 		n1.next = n2;
 		n2.next = n3;
 		n3.next = n4;
 		n4.next = n5;
 		n5.next = n6;
-		n6.next = null;
+		n6.next = n7;
+		n7.next = null;
 		display(n1);
 		
-		Node result = deleteNode(n1,1);
-		display(result);
+		Node result1 = deleteNode1(n1,1);
+		display(result1);
+		Node result2 = deleteNode2(result1,2);
+		display(result2);
+		//小结：有时候一个代码是错误的，但是和其他代码放在一起有可能会正确，千万小心，会让你忽视你的代码错误。
+		// 养成写一个代码，检验一个代码的习惯，不要一股脑全部写完。
 	
 	}
 }
