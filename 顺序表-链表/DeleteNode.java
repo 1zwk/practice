@@ -40,7 +40,7 @@ public class DeleteNode{
 		for(Node cur = head; cur != null; cur = cur.next){
 			System.out.printf("%d-->",cur.value);
 		}
-		System.out.printf("null");
+		System.out.println("null");
 	}
 	
 	public static void main(String[] args){
@@ -50,7 +50,7 @@ public class DeleteNode{
 		Node n4 = new Node(4);
 		Node n5 = new Node(5);
 		Node n6 = new Node(1);
-		display(n1);
+		
 		
 		n1.next = n2;
 		n2.next = n3;
@@ -58,6 +58,7 @@ public class DeleteNode{
 		n4.next = n5;
 		n5.next = n6;
 		n6.next = null;
+		display(n1);
 		
 		Node result = deleteNode(n1,1);
 		display(result);
