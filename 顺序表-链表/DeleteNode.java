@@ -59,7 +59,7 @@ public class DeleteNode{
 	//创建新链表，把不等于val的节点都传过去。
 	public static Node deleteNode3(Node head, int val){
 		Node newList = null;
-		
+		Node newLast = null;//记录newList的最后一个节点
 		Node cur = head;
 		while(cur != null){
 			Node next = cur.next;
@@ -67,15 +67,18 @@ public class DeleteNode{
 				//把cur尾插到newList
 				if(newList == null){
 					cur.next = newList;
-					newList = cur;            //?
+					newList = cur;
+					newLast = cur;
 				}else{
-					Node last = findLast(cur);
-					last.next = cur;
-					cur.next = null;     //?
+					newLast.next = cur;
+					newLast = cur;
 				}
+				
 			}
 			cur = next;	
 		}
+		newLast.next = null;//保证最后一个节点为null
+		
 		return newList;
 	}
 	
