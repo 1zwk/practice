@@ -27,12 +27,20 @@ public class LinkNode2{
 		return newNode;
 	}
 	//尾删
-	public static void deleteBack(Node head){
+	public static Node deleteBack(Node head){
+		//1.空链表
 		if(head == null){
 			System.out.println("空链表无法删除");
+			return null;  //忘记的 返回值
 		}
+		//忘记的   2.只有一个节点,
+		if(head.next == null){
+			return null;
+		}else{       //忘记的 else，
 		Node scond = findScond(head);
 		scond.next = null;
+		}
+		return head;
 	}
     //子问题
 	public static Node findScond(Node head){
@@ -57,7 +65,8 @@ public class LinkNode2{
 		displayLink(head);
 		head = putFront(head,10);
 		displayLink(head);
-		deleteBack(head);
+		head = deleteBack(head);
+	
 		displayLink(head);
 		
 	}
