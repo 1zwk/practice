@@ -66,7 +66,6 @@ public class LinkNode2{
 		head = putFront(head,10);
 		displayLink(head);
 		head = deleteBack(head);
-	
 		displayLink(head);
 		
 	}
