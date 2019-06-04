@@ -37,7 +37,7 @@ public class LinkNode2{
     //子问题
 	public static Node findScond(Node head){
 		Node cur = head;
-		while(cur.next != null){
+		while(cur.next.next != null){                  //忘记的  while(cur.next != null){
 			cur = cur.next;
 		}
 		return cur;
@@ -46,13 +46,14 @@ public class LinkNode2{
 		for(Node cur = head; cur != null; cur = cur.next){
 			System.out.printf("%d-->",cur.val);
 		}
+		System.out.println("null");    //忘记的   加空行
 	}
 	
 	
 	
 	public static void main(String[] args){
-		Node newNode = new Node;
-		newNode head = creatLink();
+		//Node newNode = new Node;
+		Node head = creatLink();
 		displayLink(head);
 		head = putFront(head,10);
 		displayLink(head);
