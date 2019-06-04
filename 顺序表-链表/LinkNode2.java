@@ -1,6 +1,6 @@
 class Node{
-	private int val;
-	private Node next = null;
+	public int val;
+	public Node next = null;
 
     public Node(int val){
 		this.val = val;
@@ -20,30 +20,44 @@ public class LinkNode2{
 		n1.next = n2;n2.next = n3;n3.next = n4;n4.next = n5;n5.next = null;
 		return n1;
 	}
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//头插
+	public static Node putFront(Node head, int val){
+		Node newNode = new Node(val);
+		newNode.next = head;
+		return newNode;
+	}
+	//尾删
+	public static void deleteBack(Node head){
+		if(head == null){
+			System.out.println("空链表无法删除");
+		}
+		Node scond = findScond(head);
+		scond.next = null;
+	}
+    //子问题
+	public static Node findScond(Node head){
+		Node cur = head;
+		while(cur.next != null){
+			cur = cur.next;
+		}
+		return cur;
+	}
+	public static void displayLink(Node head){
+		for(Node cur = head; cur != null; cur = cur.next){
+			System.out.printf("%d-->",cur.val);
+		}
+	}
 	
 	
 	
 	public static void main(String[] args){
+		Node newNode = new Node;
+		newNode head = creatLink();
+		displayLink(head);
+		head = putFront(head,10);
+		displayLink(head);
+		deleteBack(head);
+		displayLink(head);
 		
 	}
 }
