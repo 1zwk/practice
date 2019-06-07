@@ -130,14 +130,17 @@ class Solution{
 			if(cur1.val <= cur.val){
 				//把cur1尾插到result上
 				if(result == null){
-					Node newNode = new Node(cur1.val);
+					Node
+					/*Node newNode = new Node(cur1.val);
 					newNode.next = result;
 					result = newNode;
 				}else{
 					Node last = null;					
 					Node last = cur1.next;
 					cur1 = cur1.next;	
-                    last.next = newNode; 					
+                    last.next = newNode; 
+                 */
+				 
 				}
 			}
 		}	
