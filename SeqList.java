@@ -102,7 +102,7 @@ public void deleteInside(int index){
 	for(int i = index; i < size; i++){
 		array[i] = array[i+1];
 	}
-	array[size] = 0;
+	array[size-1] = 0;
 	size--;
 }
 
