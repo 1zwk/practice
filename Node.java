@@ -75,18 +75,7 @@ public class Node{
 		}
 		 return cur;	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static void display(Node head){
 		for(Node cur = head; cur != null; cur = cur.next){
 			System.out.printf("%d-->",cur.val);
