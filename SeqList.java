@@ -1,228 +1,275 @@
 import java.util.Arrays;
 
-//Sequence List
-public class SeqList{
-	//属性
-	private int[] array;
-	private int size;
-	//private int[] array2;
+// Sequence List
+// 顺序表中保存的数据元素类型是 int
+public class SeqList {
+	// 属性
+	private int[] array;	// 用来保存数据
+	private int size;		// 保存 array 已经有的数据个数
 	
-	public SeqList(){
-		//初始化
-		array = new int[11] ;		//11可更改
-		//array2 = new int[] {5, 7 ,4, 20, 31, 5, 6}; 
+	// 构造方法
+	public SeqList() {
+		// 初始化部分
+		// 1. 初始化 array，给定一个默认大小
+		// 2. 初始化 size，没有数据，所以 size = 0
+		array = new int[11];	// 11 可以调节
 		size = 0;
 	}
 	
-	private ensureCapacity(){
-		if(size < array.length){
+	// 支持的方法
+	// 头插	O(n)
+	public void pushFront(int element) {
+		ensureCapacity();
+		
+		// i 是数据下标，遍历范围是 [size - 1, 0]
+		for (int i = size - 1; i >= 0; i--) {
+			array[i+1] = array[i];
+		}
+		
+		// [0] 空出来了
+		array[0] = element;
+		size++;
+	}
+	
+	// 尾插 O(1)
+	public void pushBack(int element) {
+		ensureCapacity();
+		
+		array[size++] = element;
+	}
+	
+	// 中间插入，根据下标做插入 O(n)
+	public void insert(int index, int element) {
+		// index 的合法性 [0, size]，因为插入是支持尾插的，所以范围包含size
+		if (index < 0 || index > size) {
+			System.out.println("index 非法");
 			return;
 		}
-		//否则扩容
-		//1.申请空间
-		int oldCapacity = array.length;
-		int newCapacity = oldCapacity +  oldCapacity/2;
-		int newArray = int[newCapacity];
-		//2，搬家
-		for(int i = 0; i < size; i++){
-			newArray[i] = array[i];
+		
+		ensureCapacity();
+	
+		// i 代表的是空间的下标
+		for (int i = size; i > index; i--) {
+			array[i] = array[i - 1];
 		}
-		//3。通知地址
-		//有自动回收
-	}
-
-//头插
-public void pushFront(int element){
-	//空间下标
-	for(int i = size; i >= 1; i--){
-		array[i] = array[i - 1];
-	}
-	array[0] = element;
-	size++;
-}
-
-//尾插
-public void pushBack(int element){
-	//空间下标
-	array[size] = element;
-	size++;
-}
-
-//中间插入，根据下标来决定 。时间复杂度 O(n)
-public void insert(int index, int element){
-	if(index < 0 || index > size){
-		System.out.println("错误，无法插入");
-		return;
-	}
-	//遍历从后向前。	
-	//i是空间下标
-	for(int i = size; i > index; i--){
-		array[i] = array[i-1];	
-	}
-	array[index] = element;
-	size++;
-}
-
-//头删
-public void deleteFront(){
-	if(size == 0){
-		System.out.println("没有数据，无法删除");
-		return;
-	}
-	//遍历从前往后
-	//i是数据下标，遍历范围是[1，size]；
-	for(int i = 1; i <= size; i++){
-		//array【空间下标】= array【数据下标】
-		array[i-1] = array[i];
-	}
-	size--;
-	//或者array[--size]=0；
-}
-
-//尾删
-public void deleteBack(){
-	if(size == 0){
-		System.out.println("没有数据，无法删除");
-		return;
-	}
-	//数据下标
-	array[size-1]  = 0;
-	size--;
-}
-
-//中间删除，下标指定
-public void deleteInside(int index){
-	if(size == 0){
-		System.out.println("没有数据，无法删除");
-		return;
+		
+		array[index] = element;
+		size++;
 	}
 	
-	//遍历从前往后
-	//i是空间下标，遍历范围是（index,size)
-	for(int i = index; i < size; i++){
-		array[i] = array[i+1];
+	// 头删
+	public void popFront() {
+		if (size == 0) {
+			System.out.println("空顺序表，无法删除");
+			return;
+		}
+		for (int i = 0; i < size ; i++) {
+			array[i] = array[i + 1];
+		}
+		array[--size] = 0;
 	}
-	array[size-1] = 0;
-	size--;
-}
-
-//查找元素下标
-public int indexOf(int element){
-	for(int i = 0; i < size; i++){
-		if(array[i] == element){
-			return i;
+	
+	public void popBack() {
+		if (size == 0) {
+			System.out.println("空顺序表，无法删除");
+			return;
+		}
+		array[--size] = 0;
+	}
+	
+	public void erase(int index) {
+		if (size == 0) {
+			System.out.println("空顺序表，无法删除");
+			return;
 		}
 	}
-	return -1;
-}
-
-//删除第一个遇到的元素element
-public void reMove(int element){
-	int index = indexOf(element);
-	if(index != -1){
-		deleteInside(index);
-	}
-}
-
-//删除所有的element元素
-public void reMoveAll(int element){
-	//时间复杂度：O（n^2）；空间 O（1）
-	/*int index ;
-	while((index = indexOf(element)) != -1){
-		deleteInside(index);
-	}*/
 	
-	
-}
-/*
-//交换函数
-static void swap(int[] array, int a, int b){
-	int t = array[a];
-	array[a] = array[b];
-	array[b] = t;
-}
-//冒泡排序，前闭后开
-public static void bubbleSort(int[] array){
-	for(int i = 0; i < array.length; i++){
-		for(int j = 0; j < (array.length - i - 1); j++){
-			if(array[j] > array[j+1]){
-				swap(array, j, j+1);
+	// 查找
+	public int indexOf(int element) {
+		for (int i = 0; i < size; i++) {
+			if (array[i] == element) {
+				return i;
 			}
 		}
+		
+		return -1;
 	}
-}
-
-//二分查找
-public static int binarySearch(int[] array, int key){
-	int left = 0;
-	int right = array.length - 1;
 	
-	while(right < left){
-		int mid = right - (left - right) / 2; 
-		if(array[mid] > key){
-			right = mid;
-		}else if(array[mid] < key){
-			left = mid + 1;
-		}else{
-			return mid;
+	// 根据下标，获取元素
+	public int get(int index) {
+		if (index < 0 || index >= size) {
+			System.out.println("下标错误");
+			return -1;
+		}
+		return array[index];
+	}
+	
+	// 给定下标，修改下标所在元素的值
+	public void set(int index, int element) {
+		array[index] = element;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	public int capacity() {
+		return array.length;
+	}
+	
+	// 便于打印，显示顺序表中已有元素
+	public String toString() {
+		return Arrays.toString(
+			Arrays.copyOf(array, size)
+		);
+	}
+	
+	// O(n)
+	public void remove(int element) {
+		int index = indexOf(element);
+		if (index != -1) {
+			erase(index);
 		}
 	}
-	return -1;
-}
-*/
-
-//便于打印
-public String toString(){
-	return Arrays.toString(
-	Arrays.copyOf(array, size)
-	);
-}
-
-
 	
-public static void test1(String[] args){                  //静态方法不能调用普通方法
-		SeqList seqList = new SeqList();
-		//[]
-		System.out.println(seqList.toString());
-		//头插 1 2 3
-		seqList.pushFront(3);
-		seqList.pushFront(2);
-		seqList.pushFront(1);
-		System.out.println(seqList.toString());
-		//尾插
-		seqList.pushBack(10);
-		seqList.pushBack(20);
-		seqList.pushBack(30);
-		System.out.println(seqList.toString());
-		//中间插入，根据下标来决定
-		seqList.insert(2, 45);
-		seqList.insert(3, 55);
-		System.out.println(seqList.toString());
-		//头删
-		seqList.deleteFront();
-		seqList.deleteFront();
-		System.out.println(seqList.toString());
-		//尾删
-		seqList.deleteBack();
-		System.out.println(seqList.toString());
-		//中间删除，根据下标来决定
-		seqList.deleteInside(1);
-		System.out.println(seqList.toString());
-		//int[] array2 = new int[] {5, 7 ,4, 20, 31, 5, 6}; 
-		/*seqList.bubbleSort(array2);
-		System.out.println(seqList.toString2());
-		seqList.binarySearch(array2, 20);
-		System.out.println(seqList.toString2());
+	public void removeAll(int element) {
+		// 时间：O(n^2)	空间：O(1)
+		/*
+		int index;
+		while ((index = indexOf(element)) != -1) {
+			erase(index);
+		}
 		*/
-	}	
-	
-	public static void test2(String[] args){
 		
+		/* 时间：O(n)	空间：O(n)
+		int[] newArray = new int[size];
+		int j = 0;
+		for (int i = 0; i < size; i++) {
+			if (array[i] != element) {
+				newArray[j++] = array[i];
+			}
+		}
+		
+		// 最后剩下的数一共有 j 个
+		// 1. 把数据搬回去 2. 更新 size
+		for (int i = 0; i < j; i++) {
+			array[i] = newArray[i];
+		}
+		size = j;
+		*/
+		
+		/* 时间：O(n)	空间：O(1)
+		*/
+		int j = 0;
+		for (int i = 0; i < size; i++) {
+			if (array[i] != element) {
+				array[j++] = array[i];
+			}
+		}
+		size = j;
 	}
 	
+	// 内部使用的方法
+	// 无论是否需要扩容，调用完这个方法，保证容量一定够用
+	private void ensureCapacity() {
+		if (size < array.length) {
+			// 不需要扩容
+			return;
+		}
+		
+		// 1. 申请新房子
+		int newCapacity = array.length + array.length / 2;
+		int[] newArray = new int[newCapacity];
+		// 2. 搬家
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+		// 3. 发朋友圈
+		this.array = newArray;
+		
+		// 4. 退老房子，利用 java 的垃圾回收，自动回收原来的数组
+ 	}
 	
-	public static void main(String[] args){
+	
+	public static void test1(String[] args) {
+		SeqList seqList = new SeqList();
+		
+		// []
+		System.out.println(seqList.toString());
+		// 尾插 1 2 3
+		seqList.pushBack(1);
+		seqList.pushBack(2);
+		seqList.pushBack(3);
+		// [ 1, 2, 3 ]
+		System.out.println(seqList.toString());
+		
+		// 头插 10 20 30
+		seqList.pushFront(10);
+		seqList.pushFront(20);
+		seqList.pushFront(30);
+		// [ 30, 20, 10, 1, 2, 3 ]
+		System.out.println(seqList.toString());
+		
+		seqList.insert(2, 100);
+		seqList.insert(4, 200);
+		// [ 30, 20, 100, 10, 200, 1, 2, 3 ]
+		System.out.println(seqList.toString());
+		System.out.printf("当前容量: %d%n", seqList.capacity());
+		
+		seqList.pushBack(1000);
+		seqList.pushBack(2000);
+		seqList.pushBack(3000);
+		seqList.pushBack(4000);
+		seqList.pushBack(5000);
+		seqList.pushBack(6000);
+		System.out.printf("当前容量: %d%n", seqList.capacity());
+
+		seqList.popFront();
+		seqList.popFront();
+		seqList.popFront();
+		seqList.popFront();
+		// [ 200, 1, 2, 3 ]
+		System.out.println(seqList.toString());
+		
+		seqList.popBack();
+		seqList.popBack();
+		seqList.popBack();
+		// [ 200 ]
+		System.out.println(seqList.toString());
+	}
+	
+	public static void test2(String[] args) {
+		SeqList s = new SeqList();
+		s.pushBack(1);
+		s.pushBack(2);
+		s.pushBack(3);
+		s.pushBack(4);
+		s.pushBack(1);
+		s.pushBack(2);
+		s.pushBack(3);
+		s.pushBack(4);
+		// [ 1, 2, 3, 4, 1, 2, 3, 4 ]
+		System.out.println(s.toString());
+		s.remove(2);
+		// [ 1, 3, 4, 1, 2, 3, 4 ]
+		System.out.println(s.toString());
+		s.removeAll(4);
+		// [ 1, 3, 1, 2, 3 ]
+		System.out.println(s.toString());
+	}
+	
+	public static void main(String[] args) {
 		test1(args);
 		test2(args);
 	}
 }
+
+
+
+
+
+

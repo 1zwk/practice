@@ -23,4 +23,9 @@ public class SeqList2{
 		//3.通知地址
 		//有自动回收
 	}
+	
+	//头插
+	public void putFront(){
+		
+	} 
 }
