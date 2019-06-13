@@ -2,7 +2,7 @@ class Node{
 	int val;
 	Node next;
 	
-	Node Node(int val){
+	Node(int val){
 		this.val = val;
 		this.next = null;
 	}
@@ -37,7 +37,7 @@ class Solution{
 }
 
 public class ReverseList{
-	public static Node creatLink(){
+	public static void testReverseList(){
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
 		Node n3 = new Node(2);
@@ -46,12 +46,16 @@ public class ReverseList{
 		
 		n1.next = n2;n2.next = n3;n3.next = n4;n4.next = n5;n5.next = null;
 		Node head = n1;
+		Solution s = new Solution();
+		s.display(head);				
+		s.reverseList(head);
+		s.display(head);		
 	}
-	display(head);
-	Node s = new Solution();
+
+	
 	public static void main(String[] args){
-		Node head = s.reverseList(head);
-		display(head);
+		testReverseList();
+		
 		
 	}
 }
