@@ -48,7 +48,7 @@ public class ReverseList{
 		Node head = n1;
 		Solution s = new Solution();
 		s.display(head);				
-		s.reverseList(head);
+		s.reverse1(head);
 		s.display(head);		
 	}
 
