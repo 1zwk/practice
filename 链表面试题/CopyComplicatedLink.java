@@ -54,6 +54,7 @@ class Solution {
 			}else{
 				node.next = null;
 			}	
+			node.next = node.next.next;
 		}	
         return 	newhead;	
     }
