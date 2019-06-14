@@ -51,7 +51,7 @@ public class ReverseList{
 		Solution s = new Solution();
 		ListNode result = s.reverseList(n1);
 		s.display(result);
-		//想要在一个类之中使用另一个类的方法，必须先用另一个类构造一个对象，然后使用这个对象的方法和属性，加上"s."
+		//想要在一个类之中使用另一个类的方法，必须先用另一个类构造一个对象，然后使用这个对象的方法和属性，用“ 对象名” + “.”
 		
 	}
 }
