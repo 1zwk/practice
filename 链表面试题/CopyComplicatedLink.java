@@ -32,30 +32,32 @@ class Solution {
 		    node.next = cur.next;
            	cur.next = node;
 
-            cur = node.next;			
+            cur = node.next;//指向原节点的下一个			
 	    }	
         //3.再复制旧链表的random.
         cur = head;
         while(cur != null){
 			if(cur.random != null){
-				cur.next.random = cur.random.next;
+				cur.next.random = cur.random.next;//指向自己的random
 			}else{
 				cur.next.random = null;
 			}
-		}
+			cur = cur.next.next;
+		}		
         //4.把head代表的链表拆开成新老链表
         cur = head;
         while(cur != null){
-			Node node = cur.next;
-			
+			Node node = cur.next;	
+            //cur.next = node.next;			
 			if(node.next != null){
-				cur.next = node.next;
+			cur.next = node.next;	
 			    node.next = node.next.next;
 			}else{
 				node.next = null;
 			}	
-			node.next = node.next.next;
+			cur = cur.next;   // 拆分完成之后cur.next就是原链表原本的next。                    			
 		}	
+		
         return 	newhead;	
     }
 	
