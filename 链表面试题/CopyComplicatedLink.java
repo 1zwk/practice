@@ -58,8 +58,41 @@ class Solution {
 		}	
         return 	newhead;	
     }
+	
+	public void display(Node head){
+		for(Node cur = head; cur != null; cur = cur.next){
+			System.out.printf("%d-->",cur.val);
+		}
+		System.out.println("null");
+    }
 }
 
+public class CopyComplicatedLink{
+	public static void testCopyRandomList(){
+		Node n1 = new Node(1);
+		Node n2 = new Node(2);
+		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(5);
+		
+		n1.next = n2;
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = n5;
+		n5.next = null;
+		
+		Node result = new Solution().copyRandomList(n1);
+		for(Node cur = n1; cur != null; cur = cur.next){
+			System.out.printf("Node(%s, %d, %s)-->%n",cur, cur.val, cur.random);
+		}
+	    System.out.println();
+	}
+	
+	public static void main(String[] args){
+		testCopyRandomList();
+	}
+}
 
 
 
