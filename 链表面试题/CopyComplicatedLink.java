@@ -24,7 +24,7 @@ class Solution {
 		if(head == null){
 			return null;
 		}
-		Node newhead = head;
+		
         Node cur = head;
         while(cur != null){
 		    Node node = new Node(cur.val);
@@ -45,15 +45,15 @@ class Solution {
 			cur = cur.next.next;
 		}		
         //4.把head代表的链表拆开成新老链表
+		Node newhead = head.next;      //返回的是新链表的头结点。
         cur = head;
         while(cur != null){
 			Node node = cur.next;	
-            //cur.next = node.next;			
-			if(node.next != null){
-			cur.next = node.next;	
-			    node.next = node.next.next;
-			}else{
-				node.next = null;
+            cur.next = node.next;	   //调整原来节点指向它自身原本的下一个节点，需要一直执行。		
+			if(node.next != null){     //调整新节点指向新节点自身的下一个节点，
+			node.next = node.next.next;//到最后一步时node.next已经是空，这时node.next.next对空解引用会出错，
+			}else{					   //所以分情况讨论。 							
+			node.next = null;
 			}	
 			cur = cur.next;   // 拆分完成之后cur.next就是原链表原本的next。                    			
 		}	
