@@ -26,4 +26,11 @@ class Solution{
 		}
 		return head;
 	}
+	
+	public void display(Node head){
+		for(Node cur = head; cur != null; cur = cur.next){
+			System.out.printf("%d-->",cur.val);
+		}
+		System.out.println("null");
+    }
 }
