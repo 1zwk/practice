@@ -77,18 +77,17 @@ public class CopyComplicatedLink{
 		Node n4 = new Node(4);
 		Node n5 = new Node(5);
 		
-		n1.next = n2;
+		
 		n1.next = n2;
 		n2.next = n3;
 		n3.next = n4;
 		n4.next = n5;
 		n5.next = null;
 		
-		n1.random = n2;
-		n1.random = n2;
-		n2.random = n3;
-		n3.random = n4;
-		n4.random = n5;
+		n1.random = n1;		
+		n2.random = n4;
+		n3.random = n3;
+		n4.random = n2;
 		n5.random = null;
 		
 		Node result = new Solution().copyRandomList(n1);
