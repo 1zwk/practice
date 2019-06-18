@@ -84,6 +84,13 @@ public class CopyComplicatedLink{
 		n4.next = n5;
 		n5.next = null;
 		
+		n1.random = n2;
+		n1.random = n2;
+		n2.random = n3;
+		n3.random = n4;
+		n4.random = n5;
+		n5.random = null;
+		
 		Node result = new Solution().copyRandomList(n1);
 		for(Node cur = n1; cur != null; cur = cur.next){
 			System.out.printf("Node(%s, %d, %s)-->%n",cur, cur.val, cur.random);
