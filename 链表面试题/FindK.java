@@ -1,4 +1,4 @@
-public class ListNode {
+class ListNode {
     int val;
     ListNode next = null;
 
@@ -6,7 +6,8 @@ public class ListNode {
         this.val = val;
     }
 }
-public ListNode FindKth(ListNode head,int k) {
+class solution{
+    public ListNode FindKth(ListNode head,int k) {
 		int length = 0;
 		for (ListNode cur = head; cur != null; cur = cur.next) {
 			length++;
@@ -24,3 +25,4 @@ public ListNode FindKth(ListNode head,int k) {
 		
 		return kth;
     }
+}
