@@ -10,23 +10,36 @@ class ListNode {
 
 class Solution{
     public ListNode FindK(ListNode head,int k) {
-		int length = 0;
-		for (ListNode cur = head; cur != null; cur = cur.next) {
-			length++;
-		}
-		
-		if (length < k) {
+	    int length = 0;
+	    for(ListNode cur = head; cur != null; cur = cur.next){
+		    length++;
+	    }
+		if(k > length){
 			return null;
 		}
 		
 		int n = length - k;
-		ListNode kth = head;
-		for (int i = 0; i < n; i++) {
-			kth = kth.next;
+		ListNode aim = head;
+		for(int i = 0; i < n; i++){
+			aim = aim.next;
 		}
-		
-		return kth;
+		return aim;		
     }
+	
+	public ListNode FindK2(ListNode head; int k){
+		ListNode slow = head;
+		ListNode fast = head;
+	    for(int i = 0; i < k; i++){
+			if(fast == null){
+			return null;
+		  }
+			fast = fast.next;
+	    }
+		while(fast != null){
+			fast = fast.next;
+			slow = slow.next;
+		}
+		return slow;
 }
 
 public class FindK{
@@ -38,6 +51,7 @@ public class FindK{
 		ListNode n5 = new ListNode(5);
 		
 		Solution s = new Solution();
-		s.Fink
+		ListNode result = s.FindK(n1, 3);
+	   
 	}
 }
