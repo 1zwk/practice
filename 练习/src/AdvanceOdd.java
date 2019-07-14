@@ -15,6 +15,10 @@ public class AdvanceOdd{
         }
         return array;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
 
 
