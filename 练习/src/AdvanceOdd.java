@@ -1,4 +1,4 @@
-public class AdvanceOdd {
+public class AdvanceOdd{
     public int[] advanceOdd(int[] array){
         int front = 0;
         int back = array.length - 1;
