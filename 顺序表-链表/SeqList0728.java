@@ -32,7 +32,7 @@ public class SeqList0728{
 		//找到遍历的次数，开始和结尾
 		//array[空间] = array[数据]；空间一般比数据大1
 		//调整size
-		for(int i = size-1; i >= 0; i--){
+		for(int i = size - 1; i >= 0; i--){
 			array[i+1] = array[i]; 
 		}
 		array[0] = element;
@@ -49,7 +49,7 @@ public class SeqList0728{
 	
 	//随机插入
 	public void insert(int index, int element){
-		if(index < 0 || index >= size){
+		if(index < 0 || index > size){
 			System.out.println("下标错误");
 			return;
 		}	
@@ -146,6 +146,7 @@ public class SeqList0728{
 		s.putEnd(4);
 		System.out.println(s.toString());
 		s.putFront(5);
+		System.out.println(s.toString());
 		s.putFront(6);
 		System.out.println(s.toString());
 		s.insert(1,100);
