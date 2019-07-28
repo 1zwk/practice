@@ -49,7 +49,7 @@ public class SeqList0728{
 	
 	//随机插入
 	public void insert(int index, int element){
-		if(index < 0 || index > size){
+		if(index < 0 || index >= size){
 			System.out.println("下标错误");
 			return;
 		}	
@@ -93,7 +93,7 @@ public class SeqList0728{
 			System.out.println("空白表无法删除");
 			return;
 		}
-		if(index < 0 || index > size){
+		if(index < 0 || index >= size){
 			System.out.println("下标不合法");
 			return;
 		}
@@ -102,6 +102,36 @@ public class SeqList0728{
 		}
 		size--;	
 	}
+	
+	//查找元素，获取下标
+	public int searchIndex(int element){
+		for(int i = 0; i < size; i++){
+			if(array[i] == element){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//根据下标，获取元素
+    public int searchElement(int index){
+		if(index < 0 || index >= size){
+			System.out.println("下标不合法");
+			return -1;
+		}
+		return array[index];
+	}
+	
+	//给定下标修改
+	public void recompose(int index, int element){
+		if(index < 0 || index >= size){
+			System.out.println("下标不合法");
+			return;
+		}
+		array[index] = element;
+	}
+	
+	
 	
 	//打印
 	public String toString(){
@@ -126,6 +156,11 @@ public class SeqList0728{
 		s.deleteFront();
 		System.out.println(s.toString());
 		s.delete(1);
+		System.out.println(s.toString());
+		
+		System.out.println(s.searchIndex(3));
+		System.out.println(s.searchElement(2));
+		s.recompose(2,2333);
 		System.out.println(s.toString());
 	}
 
