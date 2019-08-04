@@ -1,3 +1,4 @@
+
 public class YangHui{
 	public static void main(String[] args){
 		//1.声明并且初始化二维数组
@@ -28,3 +29,21 @@ public class YangHui{
 		
 	} 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
