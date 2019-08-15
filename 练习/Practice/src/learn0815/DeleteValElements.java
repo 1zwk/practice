@@ -3,7 +3,7 @@ package learn0815;
  * 删除指定val的节点
  */
 
-class Node{
+/*class Node{
 	int val;
 	Node next;
 
@@ -15,10 +15,10 @@ class Node{
 		this.val = val;
 	}
 
-}
+}*/
 
 
-public class DeleteValElements extends AddDeleteNode{
+public class DeleteValElements {
      public Node deleteValElements(Node head, int val) {
     	 //空链表
     	 if(head == null) {
@@ -62,8 +62,7 @@ public class DeleteValElements extends AddDeleteNode{
     	 head = d.deleteValElements(head, 1);
     	 head = d.deleteValElements(head, 3);
     	 head = d.deleteValElements(head, 4);
-    	 d.display(head);
-    	
+    	 a.display(head);   	
 	}
 }
 
