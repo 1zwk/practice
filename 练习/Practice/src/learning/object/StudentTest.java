@@ -64,8 +64,7 @@ public class StudentTest {
 					stu[j+1] = tmp;
 				}
 			}
-		}
-					
+		}					
 	}
       
 }
