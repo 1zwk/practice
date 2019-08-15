@@ -34,27 +34,20 @@ public class DeleteValElements extends AddDeleteNode{
     	 }
     	 
     	 Node prev = head;
-    	 Node cur = head.next;
-    	
+    	 Node cur = head.next;    	
     	 while(cur != null) {   		 
     		 if(cur.val == val) {
-    			 prev.next = cur.next; 
-         			 
+    			 prev.next = cur.next;          			 
     		 }else {
     			prev = cur;
     		 }    		 
     		 cur = cur.next;
     	 }
-    	 
 
-    	 if(prev.val == val) {
-    		 return prev.next;
-    	 }else {
-    		 return prev;
-    	 } 
-    	 
-    	
-    	 
+    	 if(head.val == val) {
+    		 return head.next;
+    	 }   	
+    	 return head;    	 
      }
      
      public static void main(String[] args) {
