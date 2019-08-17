@@ -3,6 +3,7 @@ package learn0815;
  *找到倒数第k个元素。 
  */
 
+
 public class FindBackKth {
     public Node findBackKth(Node head, int k) {
     	int length = 0;
@@ -44,9 +45,9 @@ public class FindBackKth {
     	a.display(head);
     	FindBackKth f = new FindBackKth();
     	Node result = f.findBackKth(head, 2);
-    	System.out.printf("%d ",result.val);
+    	System.out.println(result);
     	result = f.findBackKth2(result, 1);
-    	System.out.printf("%d",result.val);   	
+    	System.out.println(result);   	
     }
 }
 
