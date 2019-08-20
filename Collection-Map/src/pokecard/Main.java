@@ -3,6 +3,7 @@ package pokecard;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Random;
 
 public class Main {
@@ -82,6 +83,17 @@ public class Main {
             }
         }
         System.out.println(A);
+
+        Iterator<PokeCard> it1 = A.iterator();
+        while (it1.hasNext()) {
+            System.out.println(it1.next());
+        }
+
+        ListIterator<PokeCard> it2 = A.listIterator();
+        System.out.println(it2.next());
+        System.out.println(it2.next());
+        System.out.println(it2.previous());//线性表迭代器方法，返回列表的上一个元素，
+                                           // 并让光标向后移一位。
 
     }
 }
