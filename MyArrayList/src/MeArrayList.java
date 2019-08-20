@@ -1,4 +1,6 @@
-import ListClass.Iterator;
+/**
+ * 顺序表实现类
+ */
 
 import java.util.Arrays;
 
