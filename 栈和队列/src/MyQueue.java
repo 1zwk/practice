@@ -1,7 +1,11 @@
+/**
+ * 自己实现一个虚拟队列
+ */
 public class MyQueue {
     private static class Node{
         private int val;
         private Node next = null;
+
 
         public Node() {
             this.val = val;
@@ -30,6 +34,7 @@ public class MyQueue {
     public int remove(){
         int n = front.val;
         front = front.next;
+
         size--;
         return n;
     }

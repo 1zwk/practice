@@ -1,3 +1,7 @@
+/**
+ * 用队列来实现一个栈
+ */
+
 import java.util.LinkedList;
 import java.util.Queue;
 

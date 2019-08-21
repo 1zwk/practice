@@ -1,3 +1,6 @@
+/**
+ * 自己实现一个虚拟栈
+ */
 public class MyStack {
     private int size = 0;
     private int[] array = new int[10];

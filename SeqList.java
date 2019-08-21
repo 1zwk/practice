@@ -265,8 +265,11 @@ public class SeqList {
 	public static void main(String[] args) {
 		test1(args);
 		test2(args);
+
 	}
 }
+
+
 
 
 

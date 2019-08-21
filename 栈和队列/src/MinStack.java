@@ -1,3 +1,7 @@
+/**
+ * 求能保存一组数据最小值得一个栈（即调用getMin()就立即可以显示这组数据的最小值）；
+ */
+
 import java.util.Stack;
 
 public class MinStack {
