@@ -1,4 +1,7 @@
 package pokecard;
+/**
+ * 扑克牌
+ */
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -29,9 +32,10 @@ public class Main {
         }
 
         //洗牌
-        Random random = new Random(20);
+        Random random = new Random(20);//用种子20构造一个随机数生成器random
         for (int i = 51; i > 0; i--) {
-            int j = random.nextInt(i);
+            int j = random.nextInt(i);//random.next(i)返回的是从0（包含）到指定值i（不包含）
+                                      //范围内一个随机数。
             swap(cards, i, j);
         }
         System.out.println(cards);

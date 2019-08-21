@@ -1,5 +1,8 @@
 package pokecard;
 
+/**
+ * 扑克牌类，
+ */
 public class PokeCard {
     private int val;
     private String colour;
