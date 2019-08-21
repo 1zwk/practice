@@ -2,38 +2,34 @@ import java.util.Stack;
 
 public class MinStack {
     Stack<Integer> stack1 = new Stack<>();
-    Stack<Integer> stack2 = new Stack<>();
+    Stack<Integer> min = new Stack<>();
 
     public MinStack() {
-
     }
 
-    public void add(int x) {
+    public void push(int x) {
         stack1.push(x);
-    }
-
-    public int  poll() {
-        if (stack2.empty()) {
-            while(!(stack1.empty())){
-                int v = stack1.pop();
-                stack2.push(v);
+        if (min.empty()) {
+            min.push(x);
+        } else {
+            int n = min.peek();
+            if (x <= n) {
+                min.push(x);
+            } else {
+                min.push(n);
             }
         }
-        return stack2.pop();
+    }
+    public int pop() {
+        min.pop();
+        return stack1.pop();
     }
 
-    public int top() {
-        if (stack2.empty()) {
-            while(!(stack1.empty())){
-                int v = stack1.pop();
-                stack2.push(v);
-            }
-        }
-        return stack2.peek();
+    public int peek() {
+        return stack1.peek();
     }
 
     public int getMin() {
-        
-
+        return min.peek();
     }
 }
