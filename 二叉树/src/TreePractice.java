@@ -138,11 +138,11 @@ public class TreePractice {
         if (root.val == val) {
             return root;
         }
-        Node left = search(root.left, val);
+        Node left = search3(root.left, val);
         if (left != null) {
             return left;
         }
-        Node right = search(root.right, val);
+        Node right = search3(root.right, val);
         if (right != null) {
             return right;
         }

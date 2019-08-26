@@ -49,8 +49,8 @@ public class TraversalTree {
         if(root == null){
             return;
         }
-        perOrderTraversal(root.left);
         System.out.println(root.val);
+        perOrderTraversal(root.left);
         perOrderTraversal(root.right);
     }
     //后续遍历
@@ -59,8 +59,8 @@ public class TraversalTree {
             return;
         }
         postOrderTraversal(root.left);
-        System.out.println(root.val);
         postOrderTraversal(root.right);
+        System.out.println(root.val);
     }
 
     //OJ ：给定一个二叉树，返回一个返回它的前序遍历 。错误答案(因为看似把root.val尾插进list了
