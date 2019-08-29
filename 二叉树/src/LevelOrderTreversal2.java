@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class LevelOrderTreversal2 {
     //层序遍历，返回{{A}, {B,C}, {D,E,F,G}}
     private static class Element{
@@ -22,10 +23,10 @@ public class LevelOrderTreversal2 {
 
         while(!queue.isEmpty()){
             Element front = queue.poll();
-            if(retList.size() == front.level){
+            if(retList.size() == front.level){//判断是否需要放入小盒子，
                 retList.add(new ArrayList<>());
             }
-            retList.get(front.level).add(front.node.val);
+            retList.get(front.level).add(front.node.val);//给小盒子里放元素，按他们的层数。
 
             if(front.node.left != null){
                 queue.add(new Element(front.node.left, front.level + 1));
@@ -37,6 +38,9 @@ public class LevelOrderTreversal2 {
 
         return retList;
     }
+
+
+
 
     public static void main(String[] args) {
         Node a = new Node('A');

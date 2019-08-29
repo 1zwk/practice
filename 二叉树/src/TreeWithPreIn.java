@@ -209,6 +209,7 @@ public class TreeWithPreIn {
         if (root == null) {//队列中不允许出现空节点。
             return;
         }
+
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
