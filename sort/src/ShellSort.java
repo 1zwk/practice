@@ -25,7 +25,7 @@ public class ShellSort {
         for (int i = 0; i < array.length - gap; i++) {
             int j;
             int key = array[i + gap];
-            for (j = i; j >= 0 && array[j] > key; j -= gap) {
+            for (j = i ; j >= 0 && array[j] > key; j -= gap) {
                 array[j + gap] = array[j];
             }
             array[j + gap] = key;

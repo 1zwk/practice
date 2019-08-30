@@ -15,23 +15,24 @@ public class SelectSort {
             //无序区间【0，array.length - i)
             //有序区间【array.length - i, array.length)
             int max = 0;
-            for (int j = 1; j < array.length - i ; j++) {//找无序区间最大值
-                if(array[j] >= array[max]){//为什么把这一步判断放进for循环里结果错误？
-                    max = j;                //因为要把数组全部跑一次找最大值，但是如果加了
-                }                           //array[j] >= array[max],在判断里，大多数就进不去循环，直接跳出了。
+            for (int j = 1; j < array.length - i; j++) {//找无序区间最大值
+                if (array[j] >= array[max]) { //为什么把这一步判断放进for循环里结果错误？
+                    max = j;                //因为放进去就无法把整个数组遍历完，
+                    //找的值就是其实不是最大值，而是一个比array[max]大的值而已。
+                }
             }
             swap(array, max, array.length - i - 1);//把最大值和无需区间最后一个数交换；
         }
     }
 
 
+
     public static void selectSort2(int[] array) {
         int left = 0;
-        int right = array.length - 1;
+        int right = array.length - 1;//区间【left，right】
         while (left < right) {
             int max = left;
             int min = left;
-
             for (int i = left + 1; i <= right; i++) {
                 if (array[min] > array[i]) {
                     min = i;
@@ -50,7 +51,6 @@ public class SelectSort {
             left++;
             right--;
         }
-
     }
 
     private static void swap(int[] array, int i, int j) {
