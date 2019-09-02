@@ -11,12 +11,12 @@ public class FastSort {
             return;
         }
 
-        //int pivotIndex = partition3(array, left, right);
-        int[] indecis = partition4(array, left, right);
-        //fastSortInternal(array, left, pivotIndex - 1);
-        //fastSortInternal(array, pivotIndex + 1, right);
-        fastSortInternal(array, left, indecis[0] - 1);
-        fastSortInternal(array, indecis[1] + 1, right);
+        int pivotIndex = partition3(array, left, right);
+        //int[] indecis = partition4(array, left, right);
+        fastSortInternal(array, left, pivotIndex - 1);
+        fastSortInternal(array, pivotIndex + 1, right);
+        //fastSortInternal(array, left, indecis[0] - 1);
+        //fastSortInternal(array, indecis[1] + 1, right);
     }
 
     private static int partition(int[] array, int left, int right) {
