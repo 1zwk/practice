@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Student implements Comparable<Student> {
-    public static int age;
+    public int age;
     public String name;
 
 

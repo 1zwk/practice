@@ -55,19 +55,15 @@ public class MergeSortWithComparable {
         Student[] s = new Student[5];
         Random random = new Random(28);
         for (int i = 0; i < s.length; i++) {
-            s[i] = new Student();
-            s[i].age = random.nextInt(100);
+           s[i] = new Student();
+           s[i].age = random.nextInt(100);
         }
         System.out.println(Arrays.toString(s));
-//        mergeSort(s);
-//        System.out.println(Arrays.toString(s));
+        mergeSort(s);
+        System.out.println(s);
 
-//        s[0].age = 10;
-//        s[1].age = 30;
-//        s[2].age = 9;
-//        s[3].age = 3;
-//        s[4].age = 12;
-       // System.out.println(Arrays.toString(s));
+
+
 
 
     }
