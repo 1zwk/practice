@@ -28,42 +28,39 @@ public class MergeSortWithComparable {
         Student[] extra = new Student[length];
         int iExtra = 0;
 
-        while (less < great) {
-            while (less < mid && great < high) {
-                int r = array[less].compareTo(array[great]);
-                if (r <= 0) {
-                    extra[iExtra++] = array[less++];
-                } else {
-                    extra[iExtra++] = array[great++];
-                }
-            }
 
-            while (less < mid) {
+        while (less < mid && great < high) {
+            int r = array[less].compareTo(array[great]);
+            if (r <= 0) {
                 extra[iExtra++] = array[less++];
-            }
-            while (great < high) {
+            } else {
                 extra[iExtra++] = array[great++];
             }
+        }
 
-            for (int i = 0; i < length; i++) {
-                array[i + low] = extra[i];
-            }
+        while (less < mid) {
+            extra[iExtra++] = array[less++];
+        }
+        while (great < high) {
+            extra[iExtra++] = array[great++];
+        }
+
+        for (int i = 0; i < length; i++) {
+            array[i + low] = extra[i];
         }
     }
+
 
     public static void main(String[] args) {
         Student[] s = new Student[5];
         Random random = new Random(28);
         for (int i = 0; i < s.length; i++) {
-           s[i] = new Student();
-           s[i].age = random.nextInt(100);
+            s[i] = new Student();
+            s[i].age = random.nextInt(100);
         }
         System.out.println(Arrays.toString(s));
         mergeSort(s);
-        System.out.println(s);
-
-
-
+        System.out.println(Arrays.toString(s));
 
 
     }
