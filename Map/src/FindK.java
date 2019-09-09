@@ -87,7 +87,7 @@ public class FindK {
 
     public static void main(String[] args) {
         String[] words = {"i", "love", "leedcode", "i", "love", "coding"};
-//        MyMap<String, Integer> map = new FindK().wordToCount(words);
+//        BinarySearchTree<String, Integer> map = new FindK().wordToCount(words);
 //        System.out.println(new FindK().wordToCount(words));
         List<String> r = new FindK().topKFrequent(words, 1);
         System.out.println(r);
