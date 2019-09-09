@@ -157,6 +157,99 @@ public class BinarySearchTree {
         return list;
     }
 
+    private static class Entry{
+        private int key;
+        private int value;
+
+        public int getKey(){
+            return key;
+        }
+
+        public int value(){
+            return value;
+        }
+
+    }
+    public Set<Entry> entrySet(){
+        Set<Entry> set = new HashSet<>();
+        if(root == null){
+            return null;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(! queue.isEmpty()){
+            Node front = queue.poll();
+            Entry entry = new Entry();
+            entry.value = front.value;
+            entry.key = front.key;
+            set.add(entry);
+            if(front.left != null){
+                queue.add(front.left);
+            }else if(front.right != null){
+                queue.add(front.right);
+            }
+        }
+        return set;
+    }
+
+
+    /**
+     * 删除 八种情况
+     * @return
+     */
+    public int remove(int key){
+        Node cur = root;
+        Node parent = null;
+        while(cur != null){
+            if(key == cur.key){
+                int oldValue = cur.value;
+                delete(cur,parent);
+                return oldValue;
+            }else if(key < cur.key){
+                parent = cur;
+                cur = cur.left;
+            }else{
+                parent = cur;
+                cur = cur.right;
+            }
+        }
+        return -1;
+    }
+
+    private void delete(Node cur, Node parent) {
+        if(cur.left == null){
+            if(cur == root){
+                root = cur.right;
+            }else if(cur == parent.right){
+                parent.left = cur.right;
+            }else if(cur == parent.left){
+                parent.right = cur.right;
+            }
+        }else if(cur.right == null){
+            if(cur == root){
+                root = cur.left;
+            }else if(cur == parent.left){
+                parent.right = cur.left;
+            }else if(cur == parent.right){
+                parent.left = cur.left;
+            }
+        }else{
+           Node sheep = cur.right;
+           Node sheepParent = cur;
+           while(sheep != null){
+               sheep = sheep.left;
+           }
+           cur.key = sheep.key;
+           cur.value = sheep.value;
+           //不是一直往左吗？为什么还要判断左右？
+           if(sheep == sheepParent.right){
+               sheepParent.right = sheep.right;
+           }else if(sheep == sheepParent.left){
+               sheepParent.left = sheep.right;
+           }
+        }
+    }
+
     public static void main(String[] args) {
         Node root = new Node();
         root.value = 1;
