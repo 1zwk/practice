@@ -23,31 +23,37 @@ import java.util.*;
  */
 public class SeachFrequentlyChar {
     public static List<Character> commonChars(String[] A) {
+        if (A == null && A.length < 2) {
+            return null;
+        }
         Map<Character, Integer> result = new HashMap<>();
         for (char e : A[0].toCharArray()) {
             int count = result.getOrDefault(e, 0);
             result.put(e, count + 1);
         }
-        Set<Character> resultSet = result.keySet();
+        //Set<Character> resultSet = result.keySet();
 
-        Map<Character, Integer> print = new HashMap<>();
+        // Map<Character, Integer> print = new HashMap<>();
+        Map<Character, Integer> temp = new HashMap<>();
         for (int i = 1; i < A.length; i++) {
-            Map<Character, Integer> temp = new HashMap<>();
+
             for (char e : A[i].toCharArray()) {
                 int count = temp.getOrDefault(e, 0);
                 temp.put(e, count + 1);
             }
-            for(char e : temp.keySet()){
-                if (resultSet.contains(e)) {
-                    int countTemp = temp.get(e);
-                    int countResult = result.get(e);
-                    int min = Math.min(countResult,countTemp);
-                    print.put(e, min);
+            for (char e : temp.keySet()) {
+                if (!result.containsKey(e)) {
+                    temp.remove(e);
+//                    int countTemp = temp.get(e);
+//                    int countResult = result.get(e);
+//                    int min = Math.min(countResult,countTemp);
+//                    print.put(e, min);
                 }
             }
         }
         List<Character> list = new ArrayList<>();
-        for (Map.Entry<Character, Integer> e : print.entrySet()) {
+
+        for (Map.Entry<Character, Integer> e : temp.entrySet()) {
             char c = e.getKey();
             int count = e.getValue();
 
@@ -58,9 +64,69 @@ public class SeachFrequentlyChar {
         return list;
     }
 
+    //思路：首先使用一个存在map的list把每个单词的map保存，（思考为什么要存进list）
+    //然后遍历第一个map的字母和后面的map比较看这个字母是否都存在，
+    // 如不存在，跳出该字母的循环，存在就找到他出现的最小次数，
+    //最后把字母和出现的次数保存进结果中。
+    public static List<Character> commonChars2(String[] A) {
+        if(A == null  ){
+            return null;
+        }
+        if( A.length <= 1){
+             List<Character> result = new ArrayList<>();
+             for(Character c : A[0].toCharArray()){
+                 result.add(c);
+             }
+             return result;
+        }
+        List<Map<Character, Integer>> list = new ArrayList<>();
+        for (String word : A) {
+            Map<Character, Integer> map = new HashMap<>();
+            for (char a : word.toCharArray()) {
+                int n = map.getOrDefault(a, 0);
+                map.put(a, 1 + n);
+            }
+            list.add(map);
+        }
+
+        List<Character> result = new ArrayList<>();
+        for (char e : list.get(0).keySet()) {
+            boolean allSame = true;
+            for (int i = 1; i < list.size(); i++) {
+                Map<Character, Integer> otherMap = list.get(i);
+                if (!otherMap.containsKey(e)) {
+                    allSame = false;
+                    break;
+                }
+            }
+
+            if (!allSame) {
+                continue;
+            }
+
+            int min = list.get(0).get(e);
+            for (int i = 1; i < list.size(); i++) {
+                int n = list.get(i).get(e);
+                if (n < min) {
+                    min = n;
+                }
+            }
+
+            for (int i = 0; i < min; i++){
+                result.add(e);
+            }
+        }
+        return result;
+    }
+
+    public static List<Character> commonChars3(String[] A){
+
+    }
+
+
     public static void main(String[] args) {
         String[] s = {"bella", "label", "roller"};
-        System.out.println(commonChars(s));
+        System.out.println(commonChars2(s));
 
     }
 
