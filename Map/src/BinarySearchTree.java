@@ -221,22 +221,23 @@ public class BinarySearchTree {
             if(cur == root){
                 root = cur.right;
             }else if(cur == parent.right){
-                parent.left = cur.right;
-            }else if(cur == parent.left){
                 parent.right = cur.right;
+            }else if(cur == parent.left){
+                parent.left = cur.right;
             }
         }else if(cur.right == null){
             if(cur == root){
                 root = cur.left;
             }else if(cur == parent.left){
-                parent.right = cur.left;
-            }else if(cur == parent.right){
                 parent.left = cur.left;
+            }else if(cur == parent.right){
+                parent.right = cur.left;
             }
         }else{
            Node sheep = cur.right;
            Node sheepParent = cur;
-           while(sheep != null){
+           while(sheep.left != null){
+               sheepParent = sheep;
                sheep = sheep.left;
            }
            cur.key = sheep.key;
