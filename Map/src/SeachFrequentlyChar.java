@@ -69,15 +69,15 @@ public class SeachFrequentlyChar {
     // 如不存在，跳出该字母的循环，存在就找到他出现的最小次数，
     //最后把字母和出现的次数保存进结果中。
     public static List<Character> commonChars2(String[] A) {
-        if(A == null  ){
+        if (A == null) {
             return null;
         }
-        if( A.length <= 1){
-             List<Character> result = new ArrayList<>();
-             for(Character c : A[0].toCharArray()){
-                 result.add(c);
-             }
-             return result;
+        if (A.length <= 1) {
+            List<Character> result = new ArrayList<>();
+            for (Character c : A[0].toCharArray()) {
+                result.add(c);
+            }
+            return result;
         }
         List<Map<Character, Integer>> list = new ArrayList<>();
         for (String word : A) {
@@ -112,21 +112,47 @@ public class SeachFrequentlyChar {
                 }
             }
 
-            for (int i = 0; i < min; i++){
+            for (int i = 0; i < min; i++) {
                 result.add(e);
             }
         }
         return result;
     }
 
-    public static List<Character> commonChars3(String[] A){
+    public static List<String> commonChars3(String[] A) {
+        List<int[]> list = new ArrayList<>();
+        for (String word : A) {
+            int[] a = new int[26];
+            for (char c : word.toCharArray()) {
+                int index = c - 'a';
+                a[index]++;
+            }
+            list.add(a);
+        }
 
+        int[] result = new int[26];
+        for (int i = 0; i < 26; i++) {
+            int n = Integer.MAX_VALUE;
+            for (int[] a : list) {
+                n = Math.min(n, a[i]);
+                result[i] = n;
+            }
+        }
+
+        List<String> resultList = new ArrayList<>();
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < result[i]; j++) {
+                char c = (char) (i + 'a');
+                resultList.add(String.valueOf(c));
+            }
+        }
+        return resultList;
     }
 
 
     public static void main(String[] args) {
         String[] s = {"bella", "label", "roller"};
-        System.out.println(commonChars2(s));
+        System.out.println(commonChars3(s));
 
     }
 
