@@ -24,38 +24,39 @@ import java.util.List;
 
  */
 public class Sum3 {
-    public static List<List<Integer>> sum3(int[] array) {
+    public static List<List<Integer>> sum3(int[] nums) {
+        Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(array);
 
-        int next = 0;
-        int last = array.length - 1;
-
-        for (int i = 0; i < array.length; i++) {
-            next = i + 1;
-            while (next < last) {
-                if (next < last && array[i] + array[next] + array[last] == 0) {
+        for(int i = 0; i < nums.length; i++){
+            int front = i + 1;
+            int last = nums.length - 1;
+            while(front < last){
+                int s = nums[i] + nums[front] + nums[last];
+                if( s == 0){
                     List<Integer> list = new ArrayList<>();
-                    list.add(array[i]);
-                    list.add(array[next]);
-                    list.add(array[last]);
+                    list.add(nums[i]);
+                    list.add(nums[front]);
+                    list.add(nums[last]);
+
                     result.add(list);
 
-                    while (next < last && array[next] == array[next++]) {
-                        next++;
+                    while(front < last && nums[front + 1] == nums[front]){
+                        front++;
                     }
-                    next++;
-                    while (next < last && array[last] == array[last--]) {
+                    front++;
+                    while(front < last && nums[last - 1] == nums[last]){//通过while把所有的后续数字都比较一遍，
                         last--;
                     }
                     last--;
-                }
-                if (next < last && array[i] + array[next] + array[last] < 0) {
-                    next++;
-                }
-                if (next < last && array[i] + array[next] + array[last] > 0) {
+                }else if(s < 0){
+                    front++;
+                }else{
                     last--;
                 }
+            }
+            while(i < nums.length - 2 && nums[i] == nums[i+1]){
+                i++;
             }
         }
         return result;
