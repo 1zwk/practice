@@ -6,6 +6,7 @@ public final class MyString  implements Comparable<MyString> {
     public MyString(char[] value){
         this.value = Arrays.copyOf(value,value.length);
     }
+
     public MyString(char[] value, int offset, int count){
         this.value = Arrays.copyOfRange(value, offset, offset + count);
     }
@@ -27,11 +28,11 @@ public final class MyString  implements Comparable<MyString> {
         if(!(s instanceof MyString)){
             return false;
         }
-        return Arrays.equals(value.((MyString) s).value);
+        return Arrays.equals(value,((MyString) s).value);
 
     }
 
-    private char[] value;
+
     public MyString toUpper(){
         //char[] copy = Arrays.copyOf(value, value.length);
         MyString s = new MyString(value);
@@ -43,7 +44,7 @@ public final class MyString  implements Comparable<MyString> {
 
             }
         }
-
+        return s;
     }
 
 
@@ -71,7 +72,7 @@ public final class MyString  implements Comparable<MyString> {
                     continue;
                 }
             }
-            return
+
         }
         if(value.length < o.value.length){
             return 1;
@@ -92,23 +93,5 @@ public final class MyString  implements Comparable<MyString> {
 
 
 
-    public int romanToInt(String s) {
-        Map<Character,Integer> common = new HashMap<>();
-        common.put('I',1);
-        common.put('V',5);
-        common.put('X',10);
-        common.put('L',50);
-        common.put('C',100);
-        common.put('D',500);
-        common.put('M',1000);
 
-        Map<Character, char[]> special = new HashMap<>();
-
-
-        for(int i = 0; i < s.length() - 1; i++){
-           common.containsKey( s.charAt(i));
-        }
-
-
-    }
 }
