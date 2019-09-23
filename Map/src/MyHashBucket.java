@@ -1,28 +1,7 @@
 import java.util.Random;
 
 public class MyHashBucket {
-//    public int remove(int key){
-//        int index = key % capacity;
-//        Node head = array[index];
-//        Node cur = head;
-//        Node prev = null;
-//        while(cur != null){
-//            if(key == cur.key ){
-//                int oldValue = cur.value;
-//                if(cur == head){
-//                    array[index] = head.next;
-//                }else{
-//                    prev.next = cur.next;
-//                }
-//                size--;
-//                return oldValue;
-//            }
-//            prev = cur;
-//            cur = cur.next;
-//        }
-//
-//        return -1;
-//    }
+
     private static class Node{
         private int key;
         private int value;
@@ -127,6 +106,7 @@ public class MyHashBucket {
         }
         return -1;
     }
+
     public static void main(String[] args) {
         MyHashBucket map = new MyHashBucket();
         Random random = new Random(20190912);
@@ -135,7 +115,6 @@ public class MyHashBucket {
             System.out.println(random.nextInt(52));
             //map.put(r, r + 1000);
         }
-
 
 
 
