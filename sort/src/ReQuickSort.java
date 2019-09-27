@@ -10,7 +10,7 @@ public class ReQuickSort {
 
     private int[] sort(int[] arr, int left, int right) {
         if (left < right) {
-            int pivotIndex = partition2(arr, left, right);
+            int pivotIndex = partition4(arr, left, right);
 
             sort(arr, left, pivotIndex - 1);
             sort(arr, pivotIndex + 1, right);
@@ -35,23 +35,54 @@ public class ReQuickSort {
         return index - 1;
     }
 
-        private int partition2(int[] arr, int left, int right ){
+    private int partition2(int[] arr, int left, int right) {
         int pivot = arr[right];
         int less = left;
         int great = right;
-        while(less < great){
-            while (less < great && arr[less] <= pivot){
+        while (less < great) {
+            while (less < great && arr[less] <= pivot) {
                 less++;
             }
-            while(less < great && arr[great] >= pivot){
+            while (less < great && arr[great] >= pivot) {
                 great--;
             }
-            swap(arr,less, great);
+            swap(arr, less, great);
         }
-        swap(arr,right,less);
+        swap(arr, right, less);
         return less;
     }
 
+    private int partition3(int[] arr, int left, int right) {
+        int pivot = arr[left];
+        int less = left;
+        int great = right;
+        while (less < great) {
+            while (less < great && arr[great] >= pivot) {
+                great--;
+            }
+            arr[less] = arr[great];
+            while (less < great && arr[less] <= pivot) {
+                less++;
+            }
+            arr[great] = arr[less];
+        }
+        arr[great] = pivot;
+        return less;
+    }
+
+
+    private int partition4(int[] array, int left, int right){
+        int pivot = right;
+        int index = left;
+        for(int i = index; i <= right; i++){
+            if(array[i] < array[pivot]){
+                swap(array, i, index);
+                index++;
+            }
+        }
+        swap(array, index, pivot);
+        return index;
+    }
 
     private void swap(int[] arr, int i, int index) {
         int tmp = arr[i];
