@@ -44,7 +44,7 @@ public class FastSort {
 
     //挖坑法
     private static int partition2(int[] array, int left, int right) {
-        int pivot = array[right];
+        int pivot = array[right];//挖坑法，第一步保存的必须是基准值，而不是它的下标，因为值会在埋坑使变化
         int less = left;
         int great = right;
         while (less < great) {

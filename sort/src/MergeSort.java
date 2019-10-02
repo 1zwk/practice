@@ -35,11 +35,11 @@ public class MergeSort {
             extra[iExtra++] = array[iLeft++];
         }
         while(iRight < high){
-            extra[iExtra++] = array[iRight];
+            extra[iExtra++] = array[iRight++];
         }
 
         for(int i = 0; i < length; i++){
-            array[low + 1] = extra[i];
+            array[low + i] = extra[i];
         }
     }
 
