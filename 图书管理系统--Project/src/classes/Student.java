@@ -1,6 +1,7 @@
 package classes;
 
-import java.sql.SQLOutput;
+import action.Action;
+import exception.*;
 import java.util.Scanner;
 
 public class Student extends User {
@@ -19,15 +20,16 @@ public class Student extends User {
     }
 
     @Override
-    public boolean input() {
+    public boolean input() throws Exception {
         Scanner scanner = new Scanner(System.in);
         int select = scanner.nextInt();
         switch(select){
-            case 0:return true;
+            case 0:
+                changeUser();break;
             case 1:
-                System.out.println("请查阅书籍"); break;
+                queryBook(); break;
             case 2:
-                System.out.println("请借书"); break;
+                borrowBook(); break;
             case 3:
                 System.out.println("请还书"); break;
             case 4:
@@ -36,4 +38,24 @@ public class Student extends User {
 
         return false;
     }
+
+    private void borrowBook(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入ISBN");
+        String ISBN = sc.nextLine();
+        User user = User.getCurUser();
+        try{
+            Books book = Action.borrowBook(user,ISBN);
+            System.out.printf("借阅《%s》成功！%n",book.getTitle());
+        }catch(NoSuchBookException e){
+            System.out.println("没有该书");
+        }catch(BookNotEnoughException e){
+            System.out.println("该书已经被借阅完");
+        }catch(YetBorrowedException e){
+            System.out.println("你已经借阅过该书");
+        }
+    }
+
+
+
 }

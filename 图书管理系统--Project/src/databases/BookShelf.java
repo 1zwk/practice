@@ -1,6 +1,6 @@
 package databases;
 
-import action.NoSuchBookException;
+import exception.NoSuchBookException;
 import classes.Books;
 
 
@@ -10,21 +10,26 @@ import java.util.List;
 public class BookShelf {
     private List<Books> booksList = new ArrayList<>();
 
-    private static BookShelf bookShelf = new BookShelf();
-    public static BookShelf getIntance() {
+    //单例模式（每次取就取得是唯一的内个对象
+    private static BookShelf bookShelf = new BookShelf();//通过声明为静态属性，使他只在类加载的时候加载一次
+    public static BookShelf getInstance() {
         return bookShelf;
     }
 
-    public Books search(String ISBN) {
-        for(Books e : booksList){
-            if(e.is(ISBN)){
-                return e;
+    public Books search(String ISBN) throws NoSuchBookException {
+        for(Books book : booksList){
+            if(book.is(ISBN)){
+                return book;
             }
         }
-        return new NoSuchBookException(ISBN);
+        throw new NoSuchBookException(ISBN);
     }
 
     public void putBook(Books book) {
         booksList.add(book);
+    }
+
+    public List<Books> queryBooks() {
+        return new ArrayList<>(booksList);
     }
 }

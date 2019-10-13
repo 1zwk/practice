@@ -4,10 +4,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         User currentUser = User.login();
         boolean isQuit;
-        do{
+        do {
             currentUser.meau();
             isQuit = currentUser.input();
-        }while (!isQuit);
+        } while (!isQuit);
         System.out.println("欢迎下次光临");
     }
 }

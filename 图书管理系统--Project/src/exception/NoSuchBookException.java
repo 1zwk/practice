@@ -1,6 +1,6 @@
-package action;
+package exception;
 
-public class NoSuchBookException extends Exception {
+public class NoSuchBookException extends Exception{
     public NoSuchBookException() {
     }
 
