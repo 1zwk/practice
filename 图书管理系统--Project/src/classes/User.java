@@ -63,6 +63,10 @@ public abstract class User {
         System.out.printf("共查询到 %d 本书", bookShelf.size());
     }
 
+    protected void queryRecord(){
+
+    }
+
 
     public String getId() {
         return ID;
@@ -83,4 +87,5 @@ public abstract class User {
         }
         return false;
     }
+
 }

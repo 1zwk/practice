@@ -26,7 +26,7 @@ public class Teacher extends User {
         int select = scanner.nextInt();
         switch(select){
             case 0:
-                changeUser(); break;
+                return changeUser();
             case 1:
                 putBook(); break;
             case 2:
