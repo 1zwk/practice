@@ -16,4 +16,7 @@ public class Main {
         } while (!isQuit);
         System.out.println("欢迎下次光临");
     }
+
+
+
 }

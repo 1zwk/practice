@@ -57,5 +57,7 @@ public class Books {
     }
 
     public void returnBook() {
+        curCount++;
+        borrowedCount++;
     }
 }

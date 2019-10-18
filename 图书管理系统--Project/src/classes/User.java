@@ -2,6 +2,7 @@ package classes;
 
 import action.Action;
 import databases.BookShelf;
+import databases.RecordShelf;
 
 import javax.xml.bind.SchemaOutputResolver;
 import java.util.List;
@@ -20,6 +21,10 @@ public abstract class User {
 
     protected static User getCurUser() {
         return curUser;
+    }
+
+    public String getId() {
+        return ID;
     }
 
     public abstract void meau();
@@ -55,22 +60,37 @@ public abstract class User {
 
        /* BookShelf bookShelf = BookShelf.getInstance();
         List<Books> booksList = bookShelf.queryBooks();*/ //也不这么做，更愿意把每一步都封装进一个方法中
+        
+
         List<Books> bookShelf = Action.queryBooks();
         for(Books book : bookShelf){
             System.out.printf("《%s》,ISBN:%s, 当前存量：%d,借阅次数：%d %n",
                     book.getTitle(),book.getISBN(),book.getCurCount(),book.getBorrowedCount());
         }
+
         System.out.printf("共查询到 %d 本书", bookShelf.size());
     }
 
     protected void queryRecord(){
-
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("请输入要还的ISBN");
+//        String ISBN = sc.nextLine();
+//        User user = User.getCurUser();
+        List<Record> recordShelf = Action.queryRecord();
+        for(Record record : recordShelf){
+            System.out.printf("ID：%s, 书籍编号%s, 借阅时间%s %n",
+                                record.getUserId(),
+                                record.getBookISBN(),
+                                record.getBorrowAt()
+                                                     );
+        }
+        System.out.println("共查询到" + recordShelf.size() + "本书");
     }
 
 
-    public String getId() {
-        return ID;
-    }
+
+
+
 
 
     protected boolean changeUser() throws Exception {

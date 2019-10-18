@@ -29,7 +29,13 @@ public class BookShelf {
         booksList.add(book);
     }
 
-    public List<Books> queryBooks() {
-        return new ArrayList<>(booksList);
+    public List<Books> queryBooks(QueryCondition queryCondition) {
+        List<Books> list = new ArrayList<>();
+        for(Books book : booksList){
+            if(queryCondition == null || queryCondition.condition(book)){
+                list.add(book);
+            }
+        }
+        return list;
     }
 }

@@ -1,6 +1,5 @@
 package databases;
 
-import action.Action;
 import classes.Record;
 import classes.User;
 import exception.NotBorrowedException;
@@ -44,6 +43,16 @@ public class RecordShelf {
         if (flag == -1) {
             throw new NotBorrowedException();
         }
+    }
+
+    public List<Record> queryRecord(QueryCondition queryCondition) {//接口直接当做参数传进去
+        List<Record> list = new ArrayList<>();
+        for(Record record : RecordList){
+            if(queryCondition == null || queryCondition.condition(record)){
+                list.add(record);
+            }
+        }
+        return list;
     }
 
 

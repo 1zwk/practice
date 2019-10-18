@@ -38,7 +38,7 @@ public class Student extends User {
                 returnBook();
                 break;
             case 4:
-                System.out.println("请查阅记录");
+                queryRecord();
                 break;
         }
 
@@ -84,6 +84,10 @@ public class Student extends User {
         }
     }
 
+
+    public void queryRecord(){
+
+    }
 
 }
 

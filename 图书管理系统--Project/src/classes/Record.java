@@ -17,4 +17,16 @@ public class Record {
         return userId.equals(user.getId())
                 && bookISBN.equals(ISBN);
     }
+
+    public String getBookISBN() {
+        return bookISBN;
+    }
+
+    public Date getBorrowAt() {
+        return borrowAt;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
 }

@@ -32,7 +32,7 @@ public class Teacher extends User {
             case 2:
                 queryBook(); break;
             case 3:
-                System.out.println("请查阅记录"); break;
+                queryRecord(); break;
         }
 
         return false;

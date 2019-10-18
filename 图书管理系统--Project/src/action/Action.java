@@ -1,6 +1,7 @@
 package action;
 
 import classes.Record;
+import databases.QueryCondition;
 import exception.NoSuchBookException;
 import classes.Books;
 import classes.User;
@@ -31,7 +32,12 @@ public class Action {
 
     public static List<Books> queryBooks() {
         BookShelf bookShelf = BookShelf.getInstance();
-        return bookShelf.queryBooks();
+        return bookShelf.queryBooks(null);
+    }
+
+    public static List<Record> queryRecord() {
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        return recordShelf.queryRecord(null);
     }
 
     /*
@@ -63,6 +69,7 @@ public class Action {
         book.returnBook();
         return book;
     }
+
 
 
 }
