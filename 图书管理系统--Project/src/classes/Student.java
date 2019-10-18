@@ -27,7 +27,7 @@ public class Student extends User {
         int select = scanner.nextInt();
         switch (select) {
             case 0:
-                return changeUser();
+                return true;
             case 1:
                 queryBook();
                 break;
@@ -62,7 +62,7 @@ public class Student extends User {
         }
     }
 
-    public void returnBook() {
+    private void returnBook() {
         // 用户界面
         // 还书-前提条件
         // 1. 判断有没有这本书

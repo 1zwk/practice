@@ -30,9 +30,20 @@ public class Action {
         }
     }
 
+
     public static List<Books> queryBooks() {
         BookShelf bookShelf = BookShelf.getInstance();
         return bookShelf.queryBooks(null);
+    }
+
+    /**
+     * 根据条件查询
+     * @param queryCondition 查询的条件
+     * @return
+     */
+    public static List<Books> queryBooksByCondition(QueryCondition<Books> queryCondition){
+        BookShelf bookShelf = BookShelf.getInstance();
+        return bookShelf.queryBooks(queryCondition);
     }
 
     public static List<Record> queryRecord() {
