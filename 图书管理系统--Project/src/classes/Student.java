@@ -4,6 +4,8 @@ import action.Action;
 import databases.BookShelf;
 import databases.RecordShelf;
 import exception.*;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Student extends User {
@@ -84,11 +86,14 @@ public class Student extends User {
         }
     }
 
-
-    public void queryRecord(){
-
-    }
-
+    //设计一个只能查询自己的借阅记录的
+//    @Override
+//    protected void queryRecord() {
+//        List<Record> recordList = Action.queryRecord();
+//
+//
+//
+//    }
 }
 
 

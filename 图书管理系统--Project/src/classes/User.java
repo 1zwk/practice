@@ -85,12 +85,15 @@ public abstract class User {
         Scanner sc = new Scanner(System.in);
         System.out.println("请选择");
         System.out.println("1、全查询");
-        System.out.println("2、查询存量大于1的");
-        System.out.println("其他、根据书名插查询");
+        System.out.println("2、查询存量大于0的");
+        System.out.println("其他、根据书名查询");
         int select = sc.nextInt();
+        sc.nextLine();
         List<Books> bookShelf;
         switch(select){
             case 1 :
+
+
                 bookShelf = Action.queryBooks();break;
             case 2:
                 bookShelf = Action.queryBooksByCondition(new Current());break;
@@ -111,15 +114,15 @@ public abstract class User {
 
     protected void queryRecord(){
 
-        List<Record> recordShelf = Action.queryRecord();
-        for(Record record : recordShelf){
+        List<Record> recordList = Action.queryRecord();
+        for(Record record : recordList){
             System.out.printf("ID：%s, 书籍编号%s, 借阅时间%s %n",
                                 record.getUserId(),
                                 record.getBookISBN(),
                                 record.getBorrowAt()
                                                      );
         }
-        System.out.println("共查询到" + recordShelf.size() + "本书");
+        System.out.println("共查询到" + recordList.size() + "本书");
     }
 
 //    登录切换界面

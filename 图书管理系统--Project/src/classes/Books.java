@@ -51,6 +51,8 @@ public class Books {
         return borrowedCount;
     }
 
+    public double getPrice(){return price;}
+
     public void borrowBook() {
         curCount--;
         borrowedCount++;
