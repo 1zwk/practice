@@ -10,9 +10,15 @@ public class Record {
     public Record(String userId, String ISBN) {
         this.userId = userId;
         this.bookISBN = ISBN;
-        this.borrowAt = new Date();  //直接记录当前时间。
+        this.borrowAt = new Date();  //Date() 直接记录当前时间。
     }
 
+    /**
+     * 查找
+     * @param user
+     * @param ISBN
+     * @return
+     */
     public boolean is(User user, String ISBN) {
         return userId.equals(user.getId())
                 && bookISBN.equals(ISBN);

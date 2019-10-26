@@ -1,11 +1,9 @@
 package classes;
 
 import action.Action;
-import databases.BookShelf;
 import databases.QueryCondition;
-import databases.RecordShelf;
-
-import javax.xml.bind.SchemaOutputResolver;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -76,6 +74,32 @@ public abstract class User {
         return curUser;
     }
 
+    /**
+     * 枚举，每个枚举值是有默认序列值的，根据书写顺序，第一个为0。
+     * 之所以在这里使用枚举，是为了代码的已读性和易维护性
+     */
+    private enum OrderBy{
+        OTHER, TITLE , PRICE_ASC, PRICE_DESC, AUTHOR
+    }
+
+    /**
+     * 创建一个哈希表存储用户的选择对应的结果
+     * 在这里就是根据选择来调用不同的比较器
+     */
+    private static final HashMap<OrderBy, Comparator<Books>> comparators = new HashMap<>();
+    static {
+        comparators.put(OrderBy.TITLE, new TitleComparator());
+        comparators.put(OrderBy.PRICE_ASC, new priceComparator(true));
+        comparators.put(OrderBy.PRICE_DESC, new priceComparator(false));
+        comparators.put(OrderBy.AUTHOR, new AutherComparator());
+    }
+
+    //调用哈希表的方法
+    private static Comparator<Books> getComparator(int selected){
+        return comparators.get(selected);
+    }
+
+
     protected void queryBook() {
         //BookShelf bookShelf = Action.querBook();不是直接用BookShelf类型来获取书架，而是使用list，这样才可以去使用循环
 
@@ -92,9 +116,15 @@ public abstract class User {
         List<Books> bookShelf;
         switch(select){
             case 1 :
-
-
-                bookShelf = Action.queryBooks();break;
+                System.out.println("请选择排序顺序：");
+                System.out.println(OrderBy.TITLE.ordinal() + ". 按标题排序");//enum.ordinal()返回它的枚举序列号
+                System.out.println("2. 按价格(从低到高)");
+                System.out.println("3. 按价格(从高到低)");
+                System.out.println("4. 按作者排序");
+                System.out.println("其他: 按默认顺序");
+                int selected2 = sc.nextInt();
+                sc.nextLine();
+                bookShelf = Action.queryBooks(getComparator(selected2));break;
             case 2:
                 bookShelf = Action.queryBooksByCondition(new Current());break;
             //case 3: 为啥这里写case 3 下边的bookShelf会飘红
@@ -124,21 +154,4 @@ public abstract class User {
         }
         System.out.println("共查询到" + recordList.size() + "本书");
     }
-
-//    登录切换界面
-//    protected boolean changeUser() throws Exception {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println();
-//        System.out.println("**请选择**");
-//        System.out.println("** 0.退出 **");
-//        System.out.println("** 1.重新登录 **");
-//        int select = scanner.nextInt();
-//        switch (select){
-//            case 0:return true;
-//            case 1:
-//                login(); break;
-//        }
-//        return false;
-//    }
-
 }

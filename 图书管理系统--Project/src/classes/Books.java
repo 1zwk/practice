@@ -9,10 +9,15 @@ public class Books {
     private int totalCount;
     private int borrowedCount;
 
-    public int getTotalCount() {
-        return totalCount;
-    }
-
+    /**
+     * 构造函数
+     *
+     * @param ISBN
+     * @param title
+     * @param writer
+     * @param price
+     * @param count
+     */
     public Books(String ISBN, String title, String writer, Double price, int count) {
         this.ISBN = ISBN;
         this.title = title;
@@ -24,15 +29,8 @@ public class Books {
 
     }
 
-
-    public boolean is(String ISBN) {
-        return this.ISBN.equals(ISBN);
-    }
-
-
-    public void increaseCount(int count) {
-        curCount += count;
-        totalCount += count;
+    public int getTotalCount() {
+        return totalCount;
     }
 
     public String getTitle() {
@@ -51,7 +49,28 @@ public class Books {
         return borrowedCount;
     }
 
-    public double getPrice(){return price;}
+    public double getPrice() {
+        return price;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    /**
+     * 搜索功能里判断是不是这本书
+     *
+     * @param ISBN
+     * @return
+     */
+    public boolean is(String ISBN) {
+        return this.ISBN.equals(ISBN);
+    }
+
+    public void increaseCount(int count) {
+        curCount += count;
+        totalCount += count;
+    }
 
     public void borrowBook() {
         curCount--;

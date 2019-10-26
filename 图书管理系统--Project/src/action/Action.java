@@ -12,6 +12,7 @@ import exception.NotBorrowedException;
 import exception.YetBorrowedException;
 
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -31,9 +32,9 @@ public class Action {
     }
 
 
-    public static List<Books> queryBooks() {
+    public static List<Books> queryBooks(Comparator<Books> orderBy) {
         BookShelf bookShelf = BookShelf.getInstance();
-        return bookShelf.queryBooks(null);
+        return bookShelf.queryBooks(null,orderBy);
     }
 
     /**
@@ -43,7 +44,7 @@ public class Action {
      */
     public static List<Books> queryBooksByCondition(QueryCondition<Books> queryCondition){
         BookShelf bookShelf = BookShelf.getInstance();
-        return bookShelf.queryBooks(queryCondition);
+        return bookShelf.queryBooks(queryCondition,null);
     }
 
     public static List<Record> queryRecord() {

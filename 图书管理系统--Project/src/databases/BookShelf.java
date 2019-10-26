@@ -5,6 +5,9 @@ import classes.Books;
 
 
 import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BookShelf {
@@ -29,12 +32,17 @@ public class BookShelf {
         booksList.add(book);
     }
 
-    public List<Books> queryBooks(QueryCondition queryCondition) {
+    public List<Books> queryBooks(QueryCondition queryCondition, Comparator<Books> orderBy) {
         List<Books> list = new ArrayList<>();
         for(Books book : booksList){
             if(queryCondition == null || queryCondition.condition(book)){
                 list.add(book);
             }
+        }
+
+        if(orderBy != null){
+            list.sort(orderBy);
+            //Collections.sort(list,orderBy);
         }
         return list;
     }
