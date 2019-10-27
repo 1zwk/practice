@@ -39,9 +39,11 @@ public class DataSourceDBUtil {
      */
     public static void release(ResultSet resultSet,PreparedStatement ps,Connection connection){
         try{
+
             if(resultSet != null) resultSet.close();
             if(ps != null) ps.close();
             if(connection != null) connection.close();
+
         }catch(SQLException e){
             e.printStackTrace();
         }
